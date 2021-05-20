@@ -108,7 +108,7 @@ const RegistrationComponent = ({ res }) => {
         amount: data.amount,
         currency: data.currency,
         name: "St Joseph's College",
-        description: "Test Transaction",
+        description: " 2021",
         order_id: data.id,
         image: "",
         handler: function (response) {
@@ -210,6 +210,9 @@ const RegistrationComponent = ({ res }) => {
               <li>
                 Participants can pay once and participate in any number of
                 events.
+              </li>
+              <li>
+                All team members must decide a unique group name before registering for the group events.
               </li>
               <li>
                 {" "}
