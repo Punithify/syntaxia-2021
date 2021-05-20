@@ -6,7 +6,9 @@ import { Alert } from "reactstrap";
 const register = () => {
   return (
     <Layout title="Syntaxia 2021 | Register">
-      <Alert>Registeration has been closed for Syntaxia 2021</Alert>
+      <Alert className="text-center mx-4">
+        Registrations has been closed for Syntaxia 2021
+      </Alert>
     </Layout>
   );
 };
