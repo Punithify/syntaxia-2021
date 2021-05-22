@@ -212,7 +212,8 @@ const RegistrationComponent = ({ res }) => {
                 events.
               </li>
               <li>
-                All team members must decide a unique group name before registering for the group events.
+                All team members must decide a unique group name before
+                registering for the group events.
               </li>
               <li>
                 {" "}
