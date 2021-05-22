@@ -1,4 +1,4 @@
-## The CYBERNETICS ASSOCIATION of Department of Computer Science, St. Joseph's College Autonomous organizes an annual inter-collegiate cultural and technological extravaganza titled as SYNTAXIA 2021. It is a colossal of different tech based events compiled together to bring you the festival of computers right at your fingertips this year as it's happening online!
+### The CYBERNETICS ASSOCIATION of Department of Computer Science, St. Joseph's College Autonomous organizes an annual inter-collegiate cultural and technological extravaganza titled as SYNTAXIA 2021. It is a colossal of different tech based events compiled together to bring you the festival of computers right at your fingertips this year as it's happening online!
 
 
 ### Project design credits to [Josephvempala](https://github.com/josephvempala).
