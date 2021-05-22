@@ -6,7 +6,7 @@
 
 2. Rename the `.env.local.example` to `.env.example`.
 
-3. Create an account on [FAUNADB](https://dashboard.fauna.com/accounts/register)and paste the `FAUNA_SECRET` in the .env.local file.
+3. Create an account on [FAUNADB](https://dashboard.fauna.com/accounts/register) and paste the `FAUNA_SECRET` in the .env.local file.
 
 4. Create an account on [Razorpay](https://razorpay.com/docs/payment-gateway/dashboard-guide/sign-up/) which is the payment gateway used for accepting payments.Paste the `NEXT_PUBLIC_RAZORPAY_KEY` , `NEXT_PUBLIC_RAZORPAY_SECRET` which can be generated from the razorpay dashboard under the settings option.
 
