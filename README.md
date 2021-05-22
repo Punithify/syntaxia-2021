@@ -1,4 +1,4 @@
-### Project design credits to Josephvempala(https://github.com/josephvempala).
+### Project design credits to [Josephvempala](https://github.com/josephvempala).
 
 ## Getting Started
 
