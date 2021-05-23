@@ -7,7 +7,7 @@
 
 1. Clone the repo `git clone <url>`
 
-2. Rename the `.env.local.example` to `.env.example`.
+2. Rename the `.env.local.example` to `.env.local`.
 
 3. Create an account on [FAUNADB](https://dashboard.fauna.com/accounts/register) and paste the `FAUNA_SECRET` in the .env.local file.
 
