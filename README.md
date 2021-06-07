@@ -6,6 +6,8 @@ The CYBERNETICS ASSOCIATION of Department of Computer Science, St. Joseph's Coll
 
 ![Logo](https://syntaxia-2021.s3.us-east-2.amazonaws.com/cybernetics-logo.png)
 
+# Credits
+Project frontend design credits to [josephvempala](https://github.com/josephvempala)
     
 ## Features
 
