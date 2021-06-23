@@ -1,22 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import MultiSelect from "react-multi-select-component";
-import {
-  Button,
-  ListGroupItem,
-  Table,
-  ListGroup,
-  Row,
-  Col,
-  Alert,
-} from "reactstrap";
+import { Button, Row, Col, Alert } from "reactstrap";
 import axios from "axios";
 import useSWR from "swr";
-import MySpinner from "../components/MySpinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import ReCAPTCHA from "react-google-recaptcha";
+import Notice from "../components/Notice";
+import EventTable from "../components/EventTable";
 
 const fetcher = async () => {
   const res = await axios
@@ -36,6 +29,7 @@ const RegistrationComponent = ({ res }) => {
   const [disabled, setDisabled] = useState(false);
   const [form, setForm] = useState(null);
   const recaptchaRef = React.createRef();
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const { data } = useSWR("/api/events", fetcher, {
     initialData: res,
@@ -64,6 +58,18 @@ const RegistrationComponent = ({ res }) => {
       }
     });
     return result;
+  };
+
+  const loadRazorpay = () => {
+    if (window.razorpay) {
+      setScriptLoaded(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.body.appendChild(script);
   };
 
   const displayRazorpay = async (event, values) => {
@@ -175,12 +181,9 @@ const RegistrationComponent = ({ res }) => {
   };
   const scrollRef = useRef(null);
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
 
-    document.body.appendChild(script);
+  useEffect(() => {
+    loadRazorpay();
     if (isMobile) {
       scrollRef.current.scrollIntoView({
         behavior: "smooth",
@@ -194,35 +197,7 @@ const RegistrationComponent = ({ res }) => {
     <>
       <ToastContainer />
       <div ref={scrollRef} className="container">
-        <ListGroup className=" mt-2 w-20 h-20">
-          <ListGroupItem color="info">
-            <h4>Note :</h4>
-            <ul>
-              <li>
-                Registrations for all the events are only processed through the
-                website.
-              </li>
-              <li>
-                Everyone willing to participate in SYNTAXIA must register
-                individually (even for group events, all the team members are
-                expected to register individually).
-              </li>
-              <li>
-                Participants can pay once and participate in any number of
-                events.
-              </li>
-              <li>
-                All team members must decide a unique group name before
-                registering for the group events.
-              </li>
-              <li>
-                {" "}
-                Please avoid paying more than once. Refund of registration fee
-                will not be entertained.
-              </li>
-            </ul>
-          </ListGroupItem>
-        </ListGroup>
+        <Notice />
         <Row className=" w-60 h-30 mx-auto mt-4">
           <Col sm={{ size: 6, order: 2, offset: 1 }}>
             <AvForm
@@ -328,32 +303,7 @@ const RegistrationComponent = ({ res }) => {
 
           <Col className="mb-4">
             <h3 className="text-center">Events List</h3>
-
-            <Table>
-              <thead>
-                <tr>
-                  <th>Event Name</th>
-                  <th>Slots Left</th>
-                </tr>
-              </thead>
-              <tbody>
-                {events.length > 0 ? (
-                  events &&
-                  events.map((singleEvent) => (
-                    <tr key={singleEvent.id}>
-                      <td>{singleEvent.label}</td>
-                      <td>
-                        {singleEvent.seats === 0
-                          ? "event closed"
-                          : singleEvent.seats}{" "}
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <MySpinner />
-                )}
-              </tbody>
-            </Table>
+            <EventTable events={events} />
           </Col>
         </Row>
       </div>
